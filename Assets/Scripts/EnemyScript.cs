@@ -15,7 +15,7 @@ public class EnemyScript : MonoBehaviour {
 	// Update is called once per frame
 	private void Update () {
         Vector3 currDirection = mNextNode.position - transform.position;
-        transform.Translate(currDirection.normalized * mMoveSpeed * Time.deltaTime);
+        transform.Translate(currDirection.normalized * mMoveSpeed * Time.deltaTime, Space.World);
 
         if (Vector3.Distance(transform.position, mNextNode.position) < mMoveSpeed * Time.deltaTime)
         {
