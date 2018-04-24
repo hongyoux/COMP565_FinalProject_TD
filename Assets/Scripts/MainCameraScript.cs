@@ -15,22 +15,23 @@ public class MainCameraScript : MonoBehaviour {
 	void Update () {
 
         Vector3 newPos = transform.position;
+        float speed = mPanSpeed * Time.deltaTime;
 
 		if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - mPanEdge)
         {
-            newPos.z += mPanSpeed * Time.deltaTime;
+            newPos.z += speed;
         }
         if (Input.GetKey("a") || Input.mousePosition.x <= mPanEdge)
         {
-            newPos.x -= mPanSpeed * Time.deltaTime;
+            newPos.x -= speed;
         }
         if (Input.GetKey("s") || Input.mousePosition.y <= mPanEdge)
         {
-            newPos.z -= mPanSpeed * Time.deltaTime;
+            newPos.z -= speed;
         }
         if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - mPanEdge)
         {
-            newPos.x += mPanSpeed * Time.deltaTime;
+            newPos.x += speed;
         }
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");

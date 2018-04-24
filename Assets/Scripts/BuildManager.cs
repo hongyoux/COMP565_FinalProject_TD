@@ -6,6 +6,8 @@ public class BuildManager : MonoBehaviour {
 
     public static BuildManager instance;
 
+    public GameObject mStandardTurret;
+    public GameObject mAnotherTurret;
     private GameObject mSelectedBuilding;
 
     private void Awake()
@@ -18,15 +20,13 @@ public class BuildManager : MonoBehaviour {
         instance = this;
     }
 
-    public GameObject mStandardTurret;
-
-    private void Start()
-    {
-        mSelectedBuilding = mStandardTurret;
-    }
-
     public GameObject GetBuildingToBuild()
     {
         return mSelectedBuilding;
+    }
+
+    public void SetTurretToBuild(GameObject turret)
+    {
+        mSelectedBuilding = turret;
     }
 }
