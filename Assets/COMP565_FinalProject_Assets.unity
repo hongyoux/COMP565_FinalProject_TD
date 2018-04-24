@@ -4974,6 +4974,7 @@ GameObject:
   - component: {fileID: 670625788}
   - component: {fileID: 670625787}
   - component: {fileID: 670625789}
+  - component: {fileID: 670625790}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -5022,6 +5023,19 @@ MonoBehaviour:
   mSpawnSpacer: 0.25
   mUI: {fileID: 110551005}
   mTimeBetween: 5
+--- !u!114 &670625790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 670625786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db804447bf6e4e944a4841aa45a7d23b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mStandardTurret: {fileID: 1444213912349860, guid: b4e34b64b929c3f4f9554ac5bed5b641,
+    type: 2}
 --- !u!4 &671545784 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4106698641531856, guid: 2c7da75817914c742b1880850fd9f4cf,
