@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9abeca0836d14024ea7ceb0666722bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mRange: 5
+  mRange: 10
   mTurnSpeed: 10
   mFireRate: 5
   mHeadRotatePoint: {fileID: 4939945633591022}

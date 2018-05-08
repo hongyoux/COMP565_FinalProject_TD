@@ -14,9 +14,9 @@ public class ShopScript : MonoBehaviour {
         buildManager.SetTurretToBuild(buildManager.mStandardTurret);
     }
 
-    public void SelectAnotherTurret()
+    public void SelectMissileLauncher()
     {
-        buildManager.SetTurretToBuild(buildManager.mAnotherTurret);
+        buildManager.SetTurretToBuild(buildManager.mMissileLauncher);
     }
 
     // Update is called once per frame
