@@ -1953,7 +1953,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4106698641531856, guid: 2c7da75817914c742b1880850fd9f4cf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -19.8
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 4106698641531856, guid: 2c7da75817914c742b1880850fd9f4cf, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4701,7 +4701,6 @@ GameObject:
   - component: {fileID: 607558427}
   - component: {fileID: 607558425}
   - component: {fileID: 607558426}
-  - component: {fileID: 607558428}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -4762,39 +4761,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 675d3ae25d1afe144b72e7cb1ac24465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mStandardBlueprint:
+    mPrefab: {fileID: 1444213912349860, guid: b4e34b64b929c3f4f9554ac5bed5b641, type: 2}
+    mCost: 150
+  mMissileBlueprint:
+    mPrefab: {fileID: 1926779456470820, guid: 6ec5342451f094a4182ad422ca8fa24d, type: 2}
+    mCost: 250
 --- !u!222 &607558427
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 607558423}
---- !u!114 &607558428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 607558423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.0060553695, g: 0.057045676, b: 0.20588237, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
 --- !u!1 &617361458
 GameObject:
   m_ObjectHideFlags: 0
@@ -4992,6 +4970,7 @@ GameObject:
   - component: {fileID: 670625787}
   - component: {fileID: 670625789}
   - component: {fileID: 670625790}
+  - component: {fileID: 670625791}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -5055,6 +5034,18 @@ MonoBehaviour:
     type: 2}
   mMissileLauncher: {fileID: 1926779456470820, guid: 6ec5342451f094a4182ad422ca8fa24d,
     type: 2}
+--- !u!114 &670625791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 670625786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c201896927c69b8488ed97e92c623cf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mStartGold: 400
 --- !u!4 &671545784 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4106698641531856, guid: 2c7da75817914c742b1880850fd9f4cf,
@@ -9668,7 +9659,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4106698641531856, guid: 2c7da75817914c742b1880850fd9f4cf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.20000076
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4106698641531856, guid: 2c7da75817914c742b1880850fd9f4cf, type: 2}
       propertyPath: m_LocalPosition.y

@@ -8,7 +8,16 @@ public class BuildManager : MonoBehaviour {
 
     public GameObject mStandardTurret;
     public GameObject mMissileLauncher;
-    private GameObject mSelectedBuilding;
+
+    public bool CanBuild
+    {
+        get
+        {
+            return mSelectedBuilding != null;
+        }
+    }
+
+    private TurretBlueprint mSelectedBuilding;
 
     private void Awake()
     {
@@ -19,14 +28,20 @@ public class BuildManager : MonoBehaviour {
         }
         instance = this;
     }
-
-    public GameObject GetBuildingToBuild()
+    
+    public void SelectTurretToBuild(TurretBlueprint blueprint)
     {
-        return mSelectedBuilding;
+        mSelectedBuilding = blueprint;
     }
 
-    public void SetTurretToBuild(GameObject turret)
+    public void BuildTurretOn(Node n)
     {
-        mSelectedBuilding = turret;
+        if (PlayerStats.mGold < mSelectedBuilding.mCost)
+        {
+            return;
+        }
+        GameObject building = Instantiate(mSelectedBuilding.mPrefab, n.GetBuildPosition(), Quaternion.identity);
+        n.mBuilding = building;
+        PlayerStats.mGold -= mSelectedBuilding.mCost;
     }
 }

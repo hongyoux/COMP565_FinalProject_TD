@@ -5,13 +5,13 @@ public class Node : MonoBehaviour {
 
     public Color mHoverColor;
     public Vector3 mPosOffset;
+    
+    [Header("Optional")]
+    public GameObject mBuilding;
 
     private BuildManager mBuildManager;
-    private GameObject mBuilding;
-
     private Renderer mRend;
     private Color mOriginalColor;
-
 
     // Use this for initialization
     void Start () {
@@ -19,11 +19,11 @@ public class Node : MonoBehaviour {
         mOriginalColor = mRend.material.color;
         mBuildManager = BuildManager.instance;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + mPosOffset;
+    }	
 
     private void OnMouseDown()
     {
@@ -31,7 +31,7 @@ public class Node : MonoBehaviour {
         {
             return;
         }
-        if (mBuildManager.GetBuildingToBuild() == null)
+        if (!mBuildManager.CanBuild)
         {
             Debug.LogError("Can't build null object");
             return;
@@ -43,8 +43,7 @@ public class Node : MonoBehaviour {
             return;
         }
 
-        GameObject newTurret = mBuildManager.GetBuildingToBuild();
-        mBuilding = Instantiate(newTurret, transform.position + mPosOffset, transform.rotation);
+        mBuildManager.BuildTurretOn(this);
     }
 
     private void OnMouseEnter()
@@ -54,7 +53,7 @@ public class Node : MonoBehaviour {
             return;
         }
 
-        if (mBuildManager.GetBuildingToBuild() == null)
+        if (!mBuildManager.CanBuild)
         {
             Debug.LogError("Can't build null object");
             return;
