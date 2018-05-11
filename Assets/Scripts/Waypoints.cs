@@ -1,5 +1,12 @@
 ﻿using UnityEngine;
 
+/**
+ * Waypoints
+ * ---------
+ * Static data class that gets all waypoints on the map in order
+ * and converts them into a static list so that enemies can use them
+ * to move
+ */
 public class Waypoints : MonoBehaviour {
 
     public static Transform[] sWaypoints;

@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * GameManager
+ * -----------
+ * Currently only prints debug when game is over
+ * Eventually maybe endgame screen or restart game.
+ */
 public class GameManager : MonoBehaviour {
-
     private bool mGameEnded = false;
 
-	// Update is called once per frame
 	void Update () {
         if (mGameEnded)
         {

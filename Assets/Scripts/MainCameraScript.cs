@@ -1,5 +1,12 @@
 ﻿using UnityEngine;
 
+/**
+ * MainCameraScript
+ * ----------------
+ * Base camera controls
+ * WASD + moving mouse to edge of screen to pan screen
+ * mouse wheel to zoom in and out
+ */
 public class MainCameraScript : MonoBehaviour {
 
     public float mPanSpeed = 20f;

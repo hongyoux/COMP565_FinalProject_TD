@@ -2,14 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * BuildManager
+ * ------------
+ * Acts as a singleton to control building logic
+ */
 public class BuildManager : MonoBehaviour {
 
     public static BuildManager instance;
 
+    [Header("Building Prefabs")]
     public GameObject mStandardTurret;
     public GameObject mMissileLauncher;
     public GameObject mLaserBeamTower;
 
+    [Header("VFX")]
     public GameObject mBuildEffect;
 
     public bool CanBuild
@@ -45,6 +52,10 @@ public class BuildManager : MonoBehaviour {
         mSelectedBuilding = blueprint;
     }
 
+    /**
+     * Spawn building if have enough gold.
+     * Play a building vfx and then subtract the gold from player
+     */
     public void BuildTurretOn(Node n)
     {
         if (PlayerStats.mGold < mSelectedBuilding.mCost)

@@ -256,17 +256,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9abeca0836d14024ea7ceb0666722bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mRange: 15
-  mFireRate: 1
-  mBulletPrefab: {fileID: 1562866544559486, guid: 5f76bb5f3702a474cbb996ce58f424c9,
-    type: 2}
-  mUseLaser: 0
-  mLaserLineRenderer: {fileID: 0}
-  mDOT: 30
-  mSlowAmount: 0.5
+  mRange: 20
   mTurnSpeed: 10
   mHeadRotatePoint: {fileID: 4939945633591022}
   mEnemyTag: Enemy
   mSpawnPoint: {fileID: 4606184535041398}
-  mImpactVfx: {fileID: 0}
-  mImpactLight: {fileID: 0}
+  mFireRate: 2
+  mBulletPrefab: {fileID: 1562866544559486, guid: 5f76bb5f3702a474cbb996ce58f424c9,
+    type: 2}

@@ -1,15 +1,22 @@
 ﻿using UnityEngine;
 
+/**
+ * Enemy Script
+ * ------------
+ * Contains base AI functionality for enemy types
+ */
 public class EnemyScript : MonoBehaviour {
 
+    [Header("Stats")]
     public float mStartSpeed = 10f;
-    private float mTotalSlowModifier = 0f;
-    [HideInInspector]
-    public float mMoveSpeed;
-
     public float mHealth = 100;
     public int mGoldValue = 50;
+
+    [Header("VFX")]
     public GameObject mDeathEffect;
+
+    [HideInInspector]
+    public float mMoveSpeed;
 
     private void Start()
     {
@@ -32,16 +39,12 @@ public class EnemyScript : MonoBehaviour {
 
     private void Die()
     {
+        // Play death effect, give player more gold, then destroy self
         PlayerStats.mGold += mGoldValue;
-        GameObject deathFX = Instantiate(mDeathEffect, transform.position, Quaternion.identity);
 
+        GameObject deathFX = Instantiate(mDeathEffect, transform.position, Quaternion.identity);
         Destroy(deathFX, 5f);
+
         Destroy(gameObject);
     }
-
-    // Update is called once per frame
-    private void Update () {
-
-	}
-
 }

@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 95948381063154254}
   - component: {fileID: 114273067136227906}
   - component: {fileID: 120406184563275772}
+  - component: {fileID: 114527504328026678}
   m_Layer: 0
   m_Name: LaserBeamTower
   m_TagString: Untagged
@@ -404,16 +405,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mRange: 20
-  mFireRate: 1
-  mBulletPrefab: {fileID: 0}
-  mUseLaser: 1
-  mLaserLineRenderer: {fileID: 120406184563275772}
-  mDOT: 40
-  mSlowAmount: 0.5
   mTurnSpeed: 10
   mHeadRotatePoint: {fileID: 4217907602708160}
   mEnemyTag: Enemy
   mSpawnPoint: {fileID: 4148470607279736}
+  mFireRate: 1
+  mBulletPrefab: {fileID: 0}
+--- !u!114 &114527504328026678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617898964558918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5783ac9e4676ed5479b4e39bb7bd679a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mRange: 20
+  mTurnSpeed: 10
+  mHeadRotatePoint: {fileID: 4217907602708160}
+  mEnemyTag: Enemy
+  mSpawnPoint: {fileID: 4148470607279736}
+  mLaserLineRenderer: {fileID: 120406184563275772}
+  mDOT: 30
+  mSlowAmount: 0.5
   mImpactVfx: {fileID: 198956366385482798}
   mImpactLight: {fileID: 108364982439367630}
 --- !u!120 &120406184563275772

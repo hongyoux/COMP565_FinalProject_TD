@@ -273,11 +273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9abeca0836d14024ea7ceb0666722bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mRange: 30
+  mRange: 20
   mTurnSpeed: 10
-  mFireRate: 1
   mHeadRotatePoint: {fileID: 4543871081746758}
   mEnemyTag: Enemy
+  mSpawnPoint: {fileID: 4733774551725534}
+  mFireRate: 0.5
   mBulletPrefab: {fileID: 1489453880546868, guid: 43979ae9e403dec4aba67931b2806990,
     type: 2}
-  mBulletSpawnPoint: {fileID: 4733774551725534}

@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4749965931852136}
-  - component: {fileID: 114685052614891892}
+  - component: {fileID: 114326820652421598}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -64,7 +64,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1489453880546868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.912, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4586291237336504}
@@ -112,7 +112,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1794243679056460}
   m_Mesh: {fileID: 4300000, guid: 4817fbcda72fe934eb3cf24b6e2ea604, type: 3}
---- !u!114 &114685052614891892
+--- !u!114 &114326820652421598
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -120,10 +120,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1489453880546868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a0f032e441e8fc4aba4644a2382f319, type: 3}
+  m_Script: {fileID: 11500000, guid: a4a32343bc2ac3b44994afe2da6ba16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mHitEffect: {fileID: 1130975030168380, guid: bce0f4b55eb85b544bb0b45380f065a5, type: 2}
   mSpeed: 30
-  mExploRadius: 8
-  mDamage: 30
+  mDamage: 40
+  mExplosionRadius: 8
