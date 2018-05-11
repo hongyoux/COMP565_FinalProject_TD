@@ -9,7 +9,10 @@ public class WaveSpawner : MonoBehaviour {
 
     public float mSpawnSpacer = .25f;
 
-    public Text mUI;
+    public Text mWaveTimer;
+    public Text mGoldDisplay;
+    public Text mLivesRemainingTxt;
+
     public float mTimeBetween = 5f;
     private float mTimeTillNextWave;
 
@@ -29,8 +32,13 @@ public class WaveSpawner : MonoBehaviour {
         }
 
         mTimeTillNextWave -= Time.deltaTime;
+        mTimeTillNextWave = Mathf.Clamp(mTimeTillNextWave, 0, Mathf.Infinity);
 
-        mUI.text = Mathf.Floor(mTimeTillNextWave + 1f).ToString();
+        mWaveTimer.text = string.Format("Next Wave: {0:00.00}", mTimeTillNextWave);
+
+        mGoldDisplay.text = string.Format("Gold: {0}", PlayerStats.mGold.ToString());
+
+        mLivesRemainingTxt.text = string.Format("Lives Left: {0}", PlayerStats.mLivesRemaining.ToString());
     }
 
     IEnumerator SpawnWave()

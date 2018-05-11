@@ -257,10 +257,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mRange: 15
-  mTurnSpeed: 10
   mFireRate: 1
-  mHeadRotatePoint: {fileID: 4939945633591022}
-  mEnemyTag: Enemy
   mBulletPrefab: {fileID: 1562866544559486, guid: 5f76bb5f3702a474cbb996ce58f424c9,
     type: 2}
-  mBulletSpawnPoint: {fileID: 4606184535041398}
+  mUseLaser: 0
+  mLaserLineRenderer: {fileID: 0}
+  mDOT: 30
+  mSlowAmount: 0.5
+  mTurnSpeed: 10
+  mHeadRotatePoint: {fileID: 4939945633591022}
+  mEnemyTag: Enemy
+  mSpawnPoint: {fileID: 4606184535041398}
+  mImpactVfx: {fileID: 0}
+  mImpactLight: {fileID: 0}

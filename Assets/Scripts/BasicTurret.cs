@@ -4,23 +4,33 @@ using UnityEngine;
 
 public class BasicTurret : MonoBehaviour {
 
-    //TODO: Add a logic system for which target to pick.
     private Transform mCurrentTarget;
-    private float mFireTimer = 0f;
+    private EnemyScript mCurrentTargetScript;
 
-    [Header("Attributes")]
+    [Header("General")]
     public float mRange = 10f;
-    public float mTurnSpeed = 10f;
+
+    [Header("Use Bullets(default)")]
+    private float mFireTimer = 0f;
     public float mFireRate = 1f;
+    public GameObject mBulletPrefab;
+
+    [Header("Use Laser")]
+    public bool mUseLaser = false;
+    public LineRenderer mLaserLineRenderer;
+    public int mDOT = 30; // Per Second
+    public float mSlowAmount = .5f;
 
     [Header("Unity Setup Vars")]
+    public float mTurnSpeed = 10f;
     public Transform mHeadRotatePoint;
     public string mEnemyTag = "Enemy";
-    public GameObject mBulletPrefab;
-    public Transform mBulletSpawnPoint;
+    public Transform mSpawnPoint;
+    public ParticleSystem mImpactVfx;
+    public Light mImpactLight;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         InvokeRepeating("UpdateTarget", 0, .25f);
 	}
 	
@@ -28,24 +38,45 @@ public class BasicTurret : MonoBehaviour {
 	void Update() {
 		if (mCurrentTarget == null)
         {
+            if (mUseLaser)
+            {
+                if (mLaserLineRenderer.enabled)
+                {
+                    mLaserLineRenderer.enabled = false;
+                    mImpactVfx.Stop();
+                    mImpactLight.enabled = false;
+                }
+            }
             return;
         }
 
+        LockOnTarget();
+
+        if (mUseLaser)
+        {
+            FireLaser();
+        }
+        else
+        {
+            if (mFireTimer <= 0f)
+            {
+                ShootBullets();
+                mFireTimer = 1f / mFireRate;
+            }
+
+            mFireTimer -= Time.deltaTime;
+        }
+    }
+
+    private void LockOnTarget()
+    {
+        //Lock onto Target
         Vector3 direction = mCurrentTarget.position - transform.position;
         Quaternion dirQuat = Quaternion.LookRotation(direction);
 
         Vector3 lookRotation = Quaternion.Lerp(mHeadRotatePoint.rotation, dirQuat, Time.deltaTime * mTurnSpeed).eulerAngles;
         mHeadRotatePoint.rotation = Quaternion.Euler(0f, lookRotation.y, 0f);
-
-        if (mFireTimer <= 0f)
-        {
-            ShootBullets();
-            mFireTimer = 1f / mFireRate;
-        }
-
-        mFireTimer -= Time.deltaTime;
-
-	}
+    }
 
     private void UpdateTarget()
     {
@@ -66,16 +97,40 @@ public class BasicTurret : MonoBehaviour {
         if (closestDistance < mRange && nearestEnemy != null)
         {
             mCurrentTarget = nearestEnemy.transform;
+            mCurrentTargetScript = mCurrentTarget.GetComponent<EnemyScript>();
         }
         else
         {
             mCurrentTarget = null;
+            mCurrentTargetScript = null;
         }
+    }
+
+    private void FireLaser()
+    {
+        mCurrentTargetScript.TakeDamage(mDOT * Time.deltaTime);
+        mCurrentTargetScript.Slow(mSlowAmount);
+
+        if (!mLaserLineRenderer.enabled)
+        {
+            mLaserLineRenderer.enabled = true;
+            mImpactVfx.Play();
+            mImpactLight.enabled = true;
+        }
+
+        mLaserLineRenderer.SetPosition(0, mSpawnPoint.position);
+        mLaserLineRenderer.SetPosition(1, mCurrentTarget.position);
+
+        Vector3 dir = mSpawnPoint.position - mCurrentTarget.position;
+
+        mImpactVfx.transform.rotation = Quaternion.LookRotation(dir);
+
+        mImpactVfx.transform.position = mCurrentTarget.position + dir.normalized;
     }
 
     private void ShootBullets()
     {
-        GameObject newBullet = Instantiate(mBulletPrefab, mBulletSpawnPoint.position, mBulletSpawnPoint.rotation);
+        GameObject newBullet = Instantiate(mBulletPrefab, mSpawnPoint.position, mSpawnPoint.rotation);
         BasicBullet bullet = newBullet.GetComponent<BasicBullet>();
 
         if (bullet != null)

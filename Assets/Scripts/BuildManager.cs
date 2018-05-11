@@ -8,12 +8,23 @@ public class BuildManager : MonoBehaviour {
 
     public GameObject mStandardTurret;
     public GameObject mMissileLauncher;
+    public GameObject mLaserBeamTower;
+
+    public GameObject mBuildEffect;
 
     public bool CanBuild
     {
         get
         {
             return mSelectedBuilding != null;
+        }
+    }
+
+    public bool HasEnoughMoney
+    {
+        get
+        {
+            return PlayerStats.mGold >= mSelectedBuilding.mCost;
         }
     }
 
@@ -41,6 +52,9 @@ public class BuildManager : MonoBehaviour {
             return;
         }
         GameObject building = Instantiate(mSelectedBuilding.mPrefab, n.GetBuildPosition(), Quaternion.identity);
+        GameObject buildFX = Instantiate(mBuildEffect, n.GetBuildPosition(), Quaternion.identity);
+        Destroy(buildFX, 5f);
+
         n.mBuilding = building;
         PlayerStats.mGold -= mSelectedBuilding.mCost;
     }

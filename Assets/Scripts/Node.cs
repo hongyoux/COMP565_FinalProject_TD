@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 public class Node : MonoBehaviour {
 
     public Color mHoverColor;
+    public Color mInvalidColor;
     public Vector3 mPosOffset;
     
     [Header("Optional")]
@@ -60,7 +61,14 @@ public class Node : MonoBehaviour {
         }
         if (mBuilding == null)
         {
-            mRend.material.color = mHoverColor;
+            if (mBuildManager.HasEnoughMoney)
+            {
+                mRend.material.color = mHoverColor;
+            }
+            else
+            {
+                mRend.material.color = mInvalidColor;
+            }
         }
     }
 

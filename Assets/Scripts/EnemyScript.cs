@@ -2,37 +2,46 @@
 
 public class EnemyScript : MonoBehaviour {
 
-    public float mMoveSpeed = 10f;
+    public float mStartSpeed = 10f;
+    private float mTotalSlowModifier = 0f;
+    [HideInInspector]
+    public float mMoveSpeed;
 
-    private Transform mNextNode;
-    private int mWaypointIndex = 0;
+    public float mHealth = 100;
+    public int mGoldValue = 50;
+    public GameObject mDeathEffect;
 
-	// Use this for initialization
-	private void Start () {
-        mNextNode = Waypoints.sWaypoints[mWaypointIndex];
-	}
-	
-	// Update is called once per frame
-	private void Update () {
-        Vector3 currDirection = mNextNode.position - transform.position;
-        transform.Translate(currDirection.normalized * mMoveSpeed * Time.deltaTime, Space.World);
-
-        if (Vector3.Distance(transform.position, mNextNode.position) < mMoveSpeed * Time.deltaTime)
-        {
-            GetNextWaypoint();
-        }
-	}
-
-    private void GetNextWaypoint()
+    private void Start()
     {
-        // Reached the last node, destroy self.
-        // TODO: Inflict lifepoint loss or something.
-        if (mWaypointIndex >= Waypoints.sWaypoints.Length - 1)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        mNextNode = Waypoints.sWaypoints[++mWaypointIndex];
+        mMoveSpeed = mStartSpeed;
     }
+
+    public void TakeDamage(float damageDealt)
+    {
+        mHealth -= damageDealt;
+        if (mHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Slow(float slowPercent)
+    {
+        mMoveSpeed = mStartSpeed * (1 - slowPercent);
+    }
+
+    private void Die()
+    {
+        PlayerStats.mGold += mGoldValue;
+        GameObject deathFX = Instantiate(mDeathEffect, transform.position, Quaternion.identity);
+
+        Destroy(deathFX, 5f);
+        Destroy(gameObject);
+    }
+
+    // Update is called once per frame
+    private void Update () {
+
+	}
+
 }

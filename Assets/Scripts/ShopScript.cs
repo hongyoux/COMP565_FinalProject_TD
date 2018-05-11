@@ -4,6 +4,7 @@ public class ShopScript : MonoBehaviour {
 
     public TurretBlueprint mStandardBlueprint;
     public TurretBlueprint mMissileBlueprint;
+    public TurretBlueprint mLaserBlueprint;
 
     private BuildManager buildManager;
 
@@ -21,7 +22,10 @@ public class ShopScript : MonoBehaviour {
     {
         buildManager.SelectTurretToBuild(mMissileBlueprint);
     }
-
+    public void SelectLaserBeamTower()
+    {
+        buildManager.SelectTurretToBuild(mLaserBlueprint);
+    }
     // Update is called once per frame
     void Update () {
 		

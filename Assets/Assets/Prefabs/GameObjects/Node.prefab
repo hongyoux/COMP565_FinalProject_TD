@@ -108,4 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mHoverColor: {r: 0.2709342, g: 0.7941176, b: 0.1401384, a: 0}
+  mInvalidColor: {r: 0.89705884, g: 0.059364192, b: 0.059364192, a: 0}
   mPosOffset: {x: 0, y: 0.5, z: 0}
+  mBuilding: {fileID: 0}

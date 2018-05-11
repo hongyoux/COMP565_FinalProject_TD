@@ -126,3 +126,4 @@ MonoBehaviour:
   mHitEffect: {fileID: 1130975030168380, guid: bce0f4b55eb85b544bb0b45380f065a5, type: 2}
   mSpeed: 30
   mExploRadius: 8
+  mDamage: 30

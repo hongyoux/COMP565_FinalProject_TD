@@ -7,6 +7,7 @@ public class BasicBullet : MonoBehaviour {
     public GameObject mHitEffect;
     public float mSpeed = 70f;
     public float mExploRadius = 0f;
+    public int mDamage = 5;
 
     public void SetTarget(Transform target)
     {
@@ -60,7 +61,12 @@ public class BasicBullet : MonoBehaviour {
 
     void Damage(Transform enemy)
     {
-        Destroy(enemy.gameObject);
+        EnemyScript e = enemy.GetComponent<EnemyScript>();
+
+        if (e != null)
+        {
+            e.TakeDamage(mDamage);
+        }
     }
 
     void Explode()
